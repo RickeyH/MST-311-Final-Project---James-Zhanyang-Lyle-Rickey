@@ -26,7 +26,7 @@
 \theoremstyle{remark}
 \newtheorem*{remark}{\textbf{Remark}}
 
-\title{MST-311 Final Project Outline}
+\title{MST-311 Final Project}
 \author{Rickey Huang, Zhanyang Sun, Lyle Huang}
 
 \newcommand{\qedwhite}{\hfill \ensuremath{\Box}}
@@ -69,7 +69,7 @@ The main idea of the proof is followed from the \textbf{Picard Iteration} descri
 
 \paragraph{  }
 
-Since we want to get a solution to the function $y$, it is a spontaneous step to take the integral of the differential equation to separate $y$. Thus, we get the following equation by take the integral of the both sides of equation (\ref{eqn:ode}) with lower and upper bounds of $x_0$ and $x$ separately:
+Since we want to get a solution to the function $y$, it is a spontaneous step to take the integral of the differential equation to separate $y$. Thus, we get the following equation by take the integral of the both sides of equation (\ref{eqn:ode}) with lower and upper bounds of $t_0 = 0$ and $t$ separately:
 
 \begin{equation}\label{eqn:integralEqn}
     y(t) = y_0 + \int_{0}^{t} f(s,y(s))\,ds
@@ -80,7 +80,17 @@ Since we want to get a solution to the function $y$, it is a spontaneous step to
 We claim that the equation (\ref{eqn:ode}) and equation (\ref{eqn:integralEqn}) are equivalent to each other in the way that they have the same solution. 
 
 \begin{proof}
-    \textcolor{red}{First, the solution to equation (\ref{eqn:ode}) also satisfies the equation (\ref{eqn:integralEqn}), and the solution to the equation (\ref{eqn:integralEqn}) is also the solution to the equation (\ref{eqn:ode}) (This will be proved using the Fundamental Theorem of Calculus).}
+    First, the solution to equation (\ref{eqn:ode}) also satisfies the equation (\ref{eqn:integralEqn}), since by integrating both sides of the equation (\ref{eqn:ode}), we have 
+    \begin{equation}
+        \int_{0}^{t}y'(s)\,ds = y(t) - y(0) = \int_{0}^{t} f(s,y(s)) \,ds
+    \end{equation}
+    Thus, the solution of the original equation should still be the solution to the equation after derivation.
+    Conversely, since the function $y$ and $f$ are Lipschitz, they are continuous, hence the solution to the equation (\ref{eqn:integralEqn}) is also the solution to the equation (\ref{eqn:ode}) by differentiating both sides of the equation (\ref{eqn:integralEqn}) using the Fundamental Theorem of Calculus
+    \begin{equation}
+        \dfrac{d}{\,dt}{(y(t))} = \dfrac{d}{\,dt}{(y_0 + \int_{0}^{t}{f(s,y(s))\,ds})}\\
+        \Rightarrow \dfrac{\,dy}{\,dt} = 0 + f(t,y(t)) - 0 = f(t,y(t))
+    \end{equation}
+    Using this derivation, the solution to the integral equation should also be the solution to the equation (\ref{eqn:ode}). Hence, both equations are equivalent up to the solutions.
 \end{proof}
 
 \subsection{Define an Operator to the Solution}
@@ -106,19 +116,19 @@ In this way, we convert the problem in the equation (\ref{eqn:integralEqn}) to a
 \subsection{Banach Fixed Point Theorem for Functions}
 
 \begin{definition}[\textbf{The Method of Successive Substitution}]\label{def:MethodSS}
-The method of \textbf{successive substitution} is a procedure that approaches the fixed point of a function by using the function $f(x)$ in a recursive way. Investigating the two curves in the Figure \ref{vis:V1}, the method starts by choosing an arbitrary point on $f(x)$, $x_{0}$ on the domain that is defined, and the point has a coordinate $(x_0, f(x_0))$. If $f(x_0) = x_0$ then $(x_0, f(x_0))$ is on the line $y = x$, which means it is the fixed point of $f(x)$. Then, we are done. Otherwise, if $f(x_0) \neq x_0$, then it is not the fixed point. But if we make a horizontal line through $(x_0,f(x_0))$, it will intersect $y = x$ at $(f(x_0),f(x_0))$, and then make a vertical line through $(f(x_0),f(x_0))$ which intersects $f(x)$ at $(x_1,f(x_1))$. Since $(f(x_0),f(x_0))$ and $(x_1,f(x_1))$ are on the same vertical line, then $x_1 = f(x_0)$. In this way, we create a point that is closer to the fixed point that we want to approach (this conclusion will be justified). Repeating this process we have a $x_2 = f(x_1)$, $\cdots, x_n = f(x_{n-1})$. Hence, we construct a sequence of approximations $\{x_n\}_{n=0}^{\infty}$. If we could prove this sequence converges to some some number, then the fixed point of this function exist. In general, the key idea we used to iterate is the following equation (\ref{eqn:ss}).
+The method of \textbf{successive substitution} is a procedure that approaches the fixed point of a function by using the function $f(x)$ in a recursive way. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Successive Approximation Visualization.png}
+    \caption{\label{vis:V1}The method of successive approximation}
+\end{figure}
+Investigating the two curves in the Figure \ref{vis:V1}, the method starts by choosing an arbitrary point on $f(x)$, $x_{0}$ on the domain that is defined, and the point has a coordinate $(x_0, f(x_0))$. If $f(x_0) = x_0$ then $(x_0, f(x_0))$ is on the line $y = x$, which means it is the fixed point of $f(x)$. Then, we are done. Otherwise, if $f(x_0) \neq x_0$, then it is not the fixed point. But if we make a horizontal line through $(x_0,f(x_0))$, it will intersect $y = x$ at $(f(x_0),f(x_0))$, and then make a vertical line through $(f(x_0),f(x_0))$ which intersects $f(x)$ at $(x_1,f(x_1))$. Since $(f(x_0),f(x_0))$ and $(x_1,f(x_1))$ are on the same vertical line, then $x_1 = f(x_0)$. In this way, we create a point that is closer to the fixed point that we want to approach (this conclusion will be justified). Repeating this process we have a $x_2 = f(x_1)$, $\cdots, x_n = f(x_{n-1})$. Hence, we construct a sequence of approximations $\{x_n\}_{n=0}^{\infty}$. If we could prove this sequence converges to some some number, then the fixed point of this function exist. In general, the key idea we used to iterate is the following equation (\ref{eqn:ss}).
 
 \begin{equation} \label{eqn:ss}
     x_{n+1} = f(x_{n})
 \end{equation}
 
 \end{definition}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{Successive Approximation Visualization.png}
-\caption{\label{vis:V1}The method of successive approximation}
-\end{figure}
 
 \paragraph{  }
 
@@ -192,22 +202,24 @@ Extending from the case of function to operators, we could apply the definition 
 
 \begin{definition}[\textbf{The Method of Successive Approximation for Operators}]\label{def:methodSSO}
 
-Similar to the definition \ref{def:MethodSS}, if there is a fixed point $y(x)$ for the operator $F(y(x))$, we could construct a sequence of approximations of functions $\{y_n(x)\}_{n=0}^{\infty}$ that converges to the fixed point of the operator. The equation similar to the equation (\ref{eqn:ss}):
+Similar to the definition \ref{def:MethodSS}, if there is a fixed point $y(x)$ for the operator $F(y(x))$, we could construct a sequence of approximations of functions $\{y_n(x)\}_{n=0}^{\infty}$ that converges to the fixed point of the operator. We describe this recursive procedure using an equation similar to the equation (\ref{eqn:ss}):
 
 \begin{equation}\label{eqn:sso}
     y_{n+1}(x) = F(y_n(x))
 \end{equation}
 
+The equation (\ref{eqn:sso}) is also called as the \textbf{Picard's Iteration}.
+
 \end{definition}
 
 \begin{definition}[\textbf{uniform convergence}]\label{def:uniConv}
 
-A sequence of function $\{y_n(x)\}_{n = 0}^{\infty}$ defined on $C[a,b] \in \mathbb{R}$ converges uniformly to $y(x)$ if and only if $\forall \epsilon > 0, \exists N(\epsilon) \in \mathbb{N}$, such that $\forall n > N, {\lvert(y_n(x) - y(x)\rvert} < \epsilon$. i.e. 
+A sequence of function $\{y_n(x)\}_{n = 0}^{\infty}$ defined on $C[a,b] \in \mathbb{R}$ converges uniformly to $y(x)$ if and only if $\forall \epsilon > 0, \exists N(\epsilon) \in \mathbb{N}$, such that $\forall n > N, {\lvert\lvert(y_n(x) - y(x)\rvert\rvert} < \epsilon$. i.e. 
 
 \begin{equation}
     \lim_{n \to \infty}{\lvert\lvert y_n(x) - y(x) \rvert\rvert} = \lim_{n \to \infty}{max_{[a,b]}{\lvert y_n(x)-y(x)\rvert}} = 0
 \end{equation}
-
+Denoted as $y_n(x) \xrightarrow{unif} y(x)$.
 \end{definition}
 
 \paragraph{  }
@@ -215,7 +227,7 @@ A sequence of function $\{y_n(x)\}_{n = 0}^{\infty}$ defined on $C[a,b] \in \mat
 Using this definition, a stronger version of Banach Fixed Point Theorem will be defined as the following:
 
 \begin{theorem}[\textbf{Banach Fixed Point Theorem for Operators}]\label{thm:BFPTO}
-    Let $S$ denote the set of continuous functions on $[a,b]$ that lie within
+    Let $S$ denote the set of continuous functions on $[a,b]$; i.e.
     \begin{equation}
         S = \{y\in C[a,b]:\lvert\lvert y - y_0\rvert\rvert \leq \alpha\}
     \end{equation}
@@ -230,21 +242,31 @@ Then the equation $y = F(y)$ has a unique solution in $S$. Moreover, the sequenc
 converges uniformly to this solution for any choice of the starting function $y_0$ in $S$.
 \end{theorem}
 
-\paragraph{  }
-
-\textcolor{red}{The proof to this theorem is almost the same with the Theorem \ref{thm:BFPT}. We still need to proof four things in this theorem: }
-
-$(1)$ The sequence $\{y_n(x)\}_{n=0}^{\infty}$ is well-defined from the equation (\ref{eqn:ssoex}). 
-
-$(2) \;$ $\{y_n(x)\}_{n=0}^{\infty}$ converges uniformly to an element of S. To prove the uniform convergence of $\{y_n(x)\}_{n=0}^{\infty}$ using the assumption in the equation (\ref{eqn:contractionO}) and following the similar argument in the proof of the convergence in the Theorem \ref{thm:BFPT}. After obtaining the inequalities
-\begin{equation}\label{eqn:ineqOp}
-    \lvert\lvert y_{n+1} - y_{n} \rvert\rvert \leq K^{n}\lvert\lvert y_1 - y_0 \rvert\rvert, \; \; \; n = 1,2, \cdots,
-\end{equation}
-Then we construct a sequence of partial sums $S_m = \{y_0 + \sum_{n = 0}^{m}{(y_{n+1} - y_n)}\}$, which is clearly bounded by equation (\ref{eqn:ineqOp}), and we will prove this sequence of partial sum uniformly converges using the \textbf{Weierstrass M test}. We will prove this test following the text written by Denise Gutermuth \cite{gutermuth_picards_nodate}. 
-
-$(3)$ We will show that the continuous function $\{y_n(x)\}_{n=0}^{\infty}$ uniformly converges is actually a fixed point of $T$.
-
-$(4)$ The solution (limit of $\{y_n(x)\}_{n=0}^{\infty}$) is unique.
+\begin{proof}
+    $(1)$ NTS: $\{y_n\}_{n = 1}^{\infty}$ is well defined. \; We will show this using induction. By hypothesis, we know that $y_0 \in S$. Then, $y_1 = T(y_0) \in S$ since $T(y)$ lies in $S$ for all $y$ in $S$. Then by induction for all $n \in \mathbb{N}$, $y_n = T(y_{n-1}) \in S$, so that $\{x_n\}_{n = 1}^{\infty}$ is well-defined.
+    
+    $(2)$ NTS: $\{y_n\}_{n = 1}^{\infty}$ converges to an element in $S$. \; Let $y_m = S_m = y_0 + \sum_{n = 0}^{m}(y_{n+1} - y_n)$. In order to show $\{y_n\}_{n = 1}^{\infty}$ converges, it suffices to show the partial sum $\{S_n\}_{n = 1}^{\infty}$ converges. We will show this partial sum sequence converges using the Weierstrass M-test. First, each increment in the partial sum can be proved to be bounded using the contraction assumption by induction. In other words, $\lvert\lvert y_{m+1} - y_{m}\rvert\rvert$ is bounded by induction. Notice, the equation (\ref{eqn:contractionO}) applies for all $w$ and $z$ in $S$. In particular, $\lvert\lvert y_2 - y_1 \rvert\rvert = \lvert\lvert T(y_1) - T(y_0) \rvert\rvert \leq K \lvert\lvert y_1 - y_0 \rvert\rvert$. Hence, $\lvert\lvert x_2 - x_1 \rvert\rvert$ is bounded by $K \lvert\lvert y_1 - y_0 \rvert\rvert$. By induction,
+    \begin{equation}
+        \lvert\lvert y_{m+1} - y_{m} \rvert\rvert \leq K \lvert\lvert y_m - y_{m-1} \rvert\rvert \leq K^2 \lvert\lvert y_{m-1} - y_{m-2} \rvert\rvert \leq \cdots \leq K^m\lvert\lvert y_1 - y_0 \rvert\rvert \; \forall m \in \mathbb{N} \; (K < 1)
+    \end{equation}
+   Then because we define $\lvert\lvert * \rvert\rvert = max_{[a,b]}\lvert * \rvert \in \mathbb{R}$,
+    \begin{equation}\label{eqn:comparison}
+        \sum_{n = 0}^{\infty}{\lvert y_{n+1} - y_n \rvert} \leq \sum_{n = 0}^{\infty}{K^n\lvert y_1 - y_0 \rvert} = \lvert y_1 - y_0 \rvert \sum_{n = 0}^{\infty}{K^n} \; (K < 1)
+    \end{equation}
+    Thus, the sequence $\lvert y_1 - y_0 \rvert \sum_{n = 0}^{\infty}{K^n} = \lvert y_1 - y_0 \rvert \cdot \tfrac{1}{1-K}$ (notice, $\sum_{n = 0}^{\infty}{K^n}$ is a geometric series with $K < 1$). Then, by the Weierstrass M-test, we know $\sum_{n = 0}^{\infty}{y_{n+1} - y_n}$ converges uniformly on $C[a,b]$. Hence $\{y_n\}_{n = 1}^{\infty}$ converges uniformly. Let $y^{*} := \lim_{n \to \infty}{y_n}$, then since $y^{*} \in C[a,b]$, $y^{*} \in S$.
+    
+    $(3)$ NTS: $y^{*}$ is a fixed point of function $T(y)$. \; Let $\epsilon > 0$, $\exists N \in \mathbb{N}$, such that $\forall n > N, \lvert\lvert y_n - y^{*} < \epsilon$ because $y_n \xrightarrow{unif} y^{*}$. We will show $\forall n > N, \lvert\lvert T(y_n) - T(y^{*}) \rvert\rvert < \epsilon$. Indeed, using the contraction map,
+    \begin{equation}
+        \lvert\lvert T(y_n) - T(y^{*}) \rvert\rvert \leq K \lvert\lvert y_n - y^{*} \rvert\rvert < \epsilon
+    \end{equation}
+    Hence $T(y_n) \xrightarrow{unif} T(y^{*})$. Also, we know $T(y_n) = y_{n+1} \xrightarrow{unif} y^{*}$. Then, since the limit is unique, $T(y^{*}) = y^{*}$. Thus, $y^{*}$ is a fixed point of $T(y)$.
+    
+    $(4)$ NTS: the fixed point $y^{*}$ is unique in $S$. \; We will show this by contradiction. Suppose by contradiction that there is another fixed point $z$ that is different from $y^{*}$, i.e. $z = T(z)$. Then, from the equation (\ref{eqn:contractionO}), we have
+    \begin{equation}
+        \lvert\lvert y^{*} - z \rvert\rvert =\lvert\lvert T(y^{*}) - T(z) \rvert\rvert \leq K \lvert\lvert y^{*} - z \rvert\rvert \Rightarrow (1-K)\lvert\lvert y^{*} - z \rvert\rvert \leq 0
+    \end{equation}
+    Since $K < 1$, then $1 - K > 0$, and $\lvert\lvert y^{*} - z \rvert\rvert$ is non-negative, then $(1-K)\lvert\lvert y^{*} - z \rvert\rvert$ is non-negative. This forces $(1-K)\lvert\lvert y^{*} - z \rvert\rvert = 0$, therefore $\lvert\lvert y^{*} - z\rvert\rvert = 0$. Hence $y^{*} = z$, which is a contradiction, since we assume $y^{*}$ and $z$ distinct. Therefore, $y^{*}$ is unique in $S$.
+\end{proof}
 
 \subsection{Applying Theorem \ref{thm:BFPTO} to prove Theorem \ref{thm:EUT}}
 
@@ -325,6 +347,7 @@ has a unique solution in some interval $I = [-h, h]$, where h is an element in $
         \begin{equation}
             \lim_{n \to \infty}{d(y_n(x) - y(x))} = 0 \;\;\; \forall n > N
         \end{equation}
+    Denoted as $y_n(x) \xrightarrow{unif} y(x)$
 \end{definition}
 
 \begin{definition}[\textbf{Cauchy Sequences}]\label{def:cauchySeq}
