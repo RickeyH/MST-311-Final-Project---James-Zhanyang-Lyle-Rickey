@@ -29,8 +29,11 @@
 \theoremstyle{example}
 \newtheorem{example}{\textbf{Example}}[section]
 
-\title{MST-311 Final Project}
-\author{Rickey Huang, Zhanyang Sun, Lyle Huang}
+\title{Proof of the Existence and Uniqueness Theorem\\
+\begin{large} 
+  MST-311 Final Project
+\end{large}}
+\author{Ruiqi (Rickey) Huang, Zhanyang Sun, Lyle Huang}
 
 \newcommand{\qedwhite}{\hfill \ensuremath{\Box}}
 
@@ -38,14 +41,14 @@
 \maketitle
 
 \begin{abstract}
-    The goal of this project is to prove the Existence and Uniqueness Theorem for ordinary differential equations in the form of $\tfrac{\,dy}{\,dt} = f(t,y), y(0) = y_0$. The theorem will be proved in $\mathbb{R}$ first using the Banach Fixed Point Theorem. We will introduce the method of successive substitution, which is also called the Picard's Iteration in the operator case, to approximate the unique solution of the given ordinary differential equation. After this, the Existence and Uniqueness Theorem will be stated and proved again in a general metric space defined as $(X,d)$ with a norm induced metric $d$ by applying the Contraction Mapping Theorem.
+    The goal of this project is to prove the Existence and Uniqueness Theorem for ordinary differential equations in the form of $\tfrac{\,dy}{\,dt} = f(t,y), y(0) = y_0$. The theorem will be proved in $\mathbb{R}$ first using the Banach Fixed Point Theorem. We will introduce the method of successive substitution, which is also called Picard's Iteration in the operator case, to approximate the unique solution of the given ordinary differential equation. After this, the Existence and Uniqueness Theorem will be stated and proved again in a general metric space defined as $(X,d)$ with a norm induced metric $d$ by applying the Contraction Mapping Theorem.
 \end{abstract}
 
 \section{Introduction}
 
 \paragraph{  }
 
-Even though we are equipped with many methods of solving ordinary differential equations in some particular forms, like linear, exact, separable, substitution and transformation, the ordinary differential equations that we are able to solve and get explicit formula are only a small proportion of all of them. This makes the Existence and Uniqueness Theorem important for us since it shows whether an ordinary equation have a solution on a certain interval. 
+Even though we are equipped with many methods of solving ordinary differential equations in some particular forms, like linear, exact, separable, substitution, and transformation, the ordinary differential equations that we are able to solve and get explicit formula are only a small proportion of all of them. This makes the Existence and Uniqueness Theorem important for us since it shows whether an ordinary equation has a solution on a certain interval. 
 
 \paragraph{  }
 
@@ -75,7 +78,7 @@ The main idea of the proof follows from the \textbf{Picard Iteration} described 
 
 \paragraph{  }
 
-In this section, we will demonstrate a way to understand the initial value problem in a different perspectives. The differential equation (\ref{eqn:ode}) will be proved to have the same solution with the equation $y(t) = y_0 + \int_{0}^{t}{f(s,y(s))}\,ds$. We also define an operator $F(y(t)) = y_0 + \int_{0}^{t}{f(s,y(s))}\,ds$ and what remains to be shown is to find the fixed point of this operator. This derivation translation of the original problem would make it easier to apply the Banach Fixed Point Theorem of operators which we would prove later to prove the Theorem \ref{thm:EUT}.
+In this section, we will demonstrate a way to understand the initial value problem in a different perspective. The differential equation (\ref{eqn:ode}) will be proved to have the same solution with the equation $y(t) = y_0 + \int_{0}^{t}{f(s,y(s))}\,ds$. We also define an operator $F(y(t)) = y_0 + \int_{0}^{t}{f(s,y(s))}\,ds$ and what remains to be shown is to find the fixed point of this operator. This derivation translation of the original problem would make it easier to apply the Banach Fixed Point Theorem of operators which we would prove later to prove the Theorem \ref{thm:EUT}.
 
 \subsection{Converting the Differential Equation into an Integral Equation} \label{sec:3.1}
 
@@ -89,23 +92,23 @@ Since we expect the solution of the ordinary differential equation to be a funct
 
 \paragraph{  }
 
-We claim that the equation (\ref{eqn:ode}) and equation (\ref{eqn:integralEqn}) are equivalent to each other in the way that they have the same solution. 
+We claim that equation (\ref{eqn:ode}) and equation (\ref{eqn:integralEqn}) are equivalent to each other in the way that they have the same solution. 
 
 \begin{proof}
-    First, the solution to equation (\ref{eqn:ode}) also satisfies the equation (\ref{eqn:integralEqn}), since by integrating both sides of the equation (\ref{eqn:ode}), we have 
+    First, the solution to equation (\ref{eqn:ode}) also satisfies equation (\ref{eqn:integralEqn}), since by integrating both sides of equation (\ref{eqn:ode}), we have 
     \begin{equation}
         \int_{0}^{t}y'(s)\,ds = y(t) - y(0) = \int_{0}^{t} f(s,y(s)) \,ds
     \end{equation}
     Thus, the solution of the original equation should still be the solution to the equation after derivation.
-    Conversely, since the function $f$ is continuous, hence the solution to the equation (\ref{eqn:integralEqn}) is also the solution to the equation (\ref{eqn:ode}) by differentiating both sides of the equation (\ref{eqn:integralEqn}) using the Fundamental Theorem of Calculus
+    Conversely, since the function $f$ is continuous, hence the solution to equation (\ref{eqn:integralEqn}) is also the solution to equation (\ref{eqn:ode}) by differentiating both sides of the equation (\ref{eqn:integralEqn}) using the Fundamental Theorem of Calculus
     \begin{equation}\label{eqn:successive}
         \dfrac{d}{\,dt}{(y(t))} = \dfrac{d}{\,dt}{(y_0 + \int_{0}^{t}{f(s,y(s))\,ds})}\\
         \Rightarrow \dfrac{\,dy}{\,dt} = 0 + f(t,y(t)) - 0 = f(t,y(t))
     \end{equation}
-    Using this derivation, the solution to the integral equation should also be the solution to the equation (\ref{eqn:ode}). Hence, both equations are equivalent up to the solutions.
+    Using this derivation, the solution to the integral equation should also be the solution to the equation (\ref{eqn:ode}). Hence, both equations are equivalent to the solutions.
 \end{proof}
 
-\subsection{Define an Operator to the Solution}\label{sec:3.2}
+\subsection{Define an Operator on the Solution}\label{sec:3.2}
 
 \paragraph{  }
 
@@ -123,7 +126,7 @@ We define an \textbf{operator} to be a mapping that sends a function to a functi
 
 \paragraph{  }
 
-In this way, we convert the problem in the equation (\ref{eqn:integralEqn}) to a question of solving the equation (\ref{eqn:operatorEqn}):
+In this way, we convert the problem in equation (\ref{eqn:integralEqn}) to a question of solving the equation (\ref{eqn:operatorEqn}):
 
 \begin{equation}\label{eqn:operatorEqn}
     y(t) = F(y(t)) = y_0 + \int_{0}^{t}{f(s,y(s))}\,ds
@@ -131,13 +134,13 @@ In this way, we convert the problem in the equation (\ref{eqn:integralEqn}) to a
 
 \paragraph{  }
 
-Notice in the equation (\ref{eqn:operatorEqn}), $y(t)$ is both the input and output of the operator $F$, we define such solution $y(t)$ to equations with the same input and output for an operator as the \textbf{fixed point} of this operator.
+Notice in equation (\ref{eqn:operatorEqn}), $y(t)$ is both the input and output of the operator $F$, we define such solution $y(t)$ to equations with the same input and output for an operator as the \textbf{fixed point} of this operator.
 
 \section{Banach Fixed Point Theorem for Functions}
 
 \paragraph{  }
 
-In this section, we will state the method of successive substitution and prove the Banach Fixed Point Theorem. The previous demonstrates that we can approach the fixed point of a function recursively, and latter shows when the function has a unique solution. These two techniques are the foundation to understand the operator version of both the method and the theorem in the next section, which are the crucial tools to prove the Existence and Uniqueness Theorem in this project. 
+In this section, we will state the method of successive substitution and prove the Banach Fixed Point Theorem. The previous demonstrates that we can approach the fixed point of a function recursively, and the latter shows when the function has a unique solution. These two techniques are the foundation to understand the operator version of both the method and the theorem in the next section, which are the crucial tools to prove the Existence and Uniqueness Theorem in this project. 
 
 \paragraph{  }
 
@@ -171,9 +174,9 @@ converges to this solution for any choice of the starting value $x_0$ in $I$.
 \end{theorem}
 
 \begin{proof}
-    \cite{r_kent_nagle_fundamentals_2011}$(1)$ NTS: $\{x_n\}_{n = 1}^{\infty}$ is well defined. \; We will show this using induction. Base case: By hypothesis, we know that $x_0 \in I$. Then, $x_1 = g(x_0) \in I$ since $g(x)$ lies in $I$ for all $x$ in $I$. Inductive hypothesis: Suppose $x_k \in I$, it suffices to show $x_{k+1} \in I$. Inductive step: $x_{k+1} = g(x_k) \in I$, since $g(x)$ is well-defined in $I$. Then by induction for all $n \in \mathbb{N}$ $\{x_n\}_{n = 1}^{\infty}$ is well-defined.
+    \cite{r_kent_nagle_fundamentals_2011}$(1)$ NTS: $\{x_n\}_{n = 1}^{\infty}$ is well defined. \; We will show this by induction. Base case: By hypothesis, we know that $x_0 \in I$. Then, $x_1 = g(x_0) \in I$ since $g(x)$ lies in $I$ for all $x$ in $I$. Inductive hypothesis: Suppose $x_k \in I$, it suffices to show $x_{k+1} \in I$. Inductive step: $x_{k+1} = g(x_k) \in I$, since $g(x)$ is well-defined in $I$. Then by induction for all $n \in \mathbb{N}$ $\{x_n\}_{n = 1}^{\infty}$ is well-defined.
     
-    $(2)$ NTS: $\{x_n\}_{n = 1}^{\infty}$ converges to an element in $I$. \; Let $x_m = S_m = x_0 + (x_1 - x_0) + (x_2 - x_1) + \cdots + (x_m - x_{m-1})$. In order to show $\{x_n\}_{n = 1}^{\infty}$ converges, it suffices to show the partial sum $\{S_n\}_{n = 1}^{\infty}$ converges. We will show this partial sum sequence converges using the comparison test and the absolute convergence theorem. First, by mean value theorem, let $p$ and $q$ be two numbers in $I$, then $\exists r \in (p,q) \in I$ such that
+    $(2)$ NTS: $\{x_n\}_{n = 1}^{\infty}$ converges to an element in $I$. \; Let $x_m = S_m = x_0 + (x_1 - x_0) + (x_2 - x_1) + \cdots + (x_m - x_{m-1})$. In order to show $\{x_n\}_{n = 1}^{\infty}$ converges, it suffices to show the partial sum $\{S_n\}_{n = 1}^{\infty}$ converges. We will show that this partial sum sequence converges using the comparison test and the absolute convergence theorem. First, by the mean value theorem, let $p$ and $q$ be two numbers in $I$, then $\exists r \in (p,q) \in I$ such that
     \begin{equation}\label{eqn:MVT}
         g(p) - g(q) = g'(r)(p - q)
     \end{equation}
@@ -181,7 +184,7 @@ converges to this solution for any choice of the starting value $x_0$ in $I$.
     \begin{equation}\label{eqn:derivativeBdd}
         \lvert g'(r) \rvert \leq K < 1 \;\;\; \forall r \in I
     \end{equation}
-    by assumption, by multiplying $\lvert p - q \rvert$ on the both sides of equation (\ref{eqn:derivativeBdd}), we obtain 
+    By assumption, after multiplying $\lvert p - q \rvert$ on both sides of equation (\ref{eqn:derivativeBdd}), we obtain 
     \begin{equation}\label{eqn:a}
         \lvert g'(r)(p-q) \rvert \leq K \lvert p - q \rvert \;\;\; (K < 1)
     \end{equation}
@@ -189,7 +192,7 @@ converges to this solution for any choice of the starting value $x_0$ in $I$.
     \begin{equation}\label{eqn:bddLink}
         \lvert g(p) - g(q) \rvert \leq K \lvert p - q \rvert
     \end{equation}
-    We will show the sequence $\{S_n\}_{n = 1}^{\infty}$ converges absolutely by proving each increment in the partial sum is bounded. In other words, we will show $\lvert x_{m+1} - x_{m}\rvert$ is bounded by induction. Base case: Notice, the equation (\ref{eqn:bddLink}) applies for all $p$ and $q$ in I. Then, in particular, $\lvert x_2 - x_1 \rvert = \lvert g(x_1) - g(x_0) \rvert \leq K \lvert x_1 - x_0 \rvert$. Hence $\lvert x_2 - x_1 \rvert$ is bounded. Inductive hypothesis: Suppose, $\lvert x_{l} - x_{l-1} \rvert$ is bounded by $K^{l-1} \rvert x_1 - x_0 \rvert$; i.e. $\lvert x_{l} - x_{l-1} \rvert \leq K^{l-1} \rvert x_1 - x_0 \rvert$. Inductive step: It remains to show $\lvert x_{l+1} - x_{l} \rvert \leq K^{l} \rvert x_1 - x_0 \rvert$. Indeed, since $\rvert x_{l + 1} - x_l \rvert = \lvert g(x_l) - g(x_{l-1}) \rvert$, then by the equation (\ref{eqn:bddLink}) and the inductive hypothesis, we have
+    We will show that the sequence $\{S_n\}_{n = 1}^{\infty}$ converges absolutely by proving that each increment in the partial sum is bounded. In other words, we will show $\lvert x_{m+1} - x_{m}\rvert$ is bounded by induction. Base case: Notice, equation (\ref{eqn:bddLink}) applies for all $p$ and $q$ in I. Then, in particular, $\lvert x_2 - x_1 \rvert = \lvert g(x_1) - g(x_0) \rvert \leq K \lvert x_1 - x_0 \rvert$. Hence $\lvert x_2 - x_1 \rvert$ is bounded. Inductive hypothesis: Suppose $\lvert x_{l} - x_{l-1} \rvert$ is bounded by $K^{l-1} \rvert x_1 - x_0 \rvert$; i.e. $\lvert x_{l} - x_{l-1} \rvert \leq K^{l-1} \rvert x_1 - x_0 \rvert$. Inductive step: It remains to show $\lvert x_{l+1} - x_{l} \rvert \leq K^{l} \rvert x_1 - x_0 \rvert$. Indeed, since $\rvert x_{l + 1} - x_l \rvert = \lvert g(x_l) - g(x_{l-1}) \rvert$, then by the equation (\ref{eqn:bddLink}) and the inductive hypothesis, we have
     \begin{equation}
         \rvert x_{l + 1} - x_l \rvert = \lvert g(x_l) - g(x_{l-1}) \rvert \leq K \lvert x_l - x_{l-1}\rvert \leq K \cdot K^{l-1} \rvert x_1 - x_0 \rvert
     \end{equation}
@@ -205,7 +208,7 @@ converges to this solution for any choice of the starting value $x_0$ in $I$.
     \end{equation}
     Thus, $x^{*}$ is a fixed point of $g(x)$.
     
-    $(4)$ NTS: the fixed point $x^{*}$ is unique in $I$. \; We will show this by contradiction. Suppose by contradiction that there is another fixed point $y$ that is different from $x^{*}$, i.e. $y = g(y)$. Then, from the equation (\ref{eqn:bddLink}), we have
+    $(4)$ NTS: the fixed point $x^{*}$ is unique in $I$. \; We will show this by contradiction. Suppose by contradiction that there is another fixed point $y$ that is different from $x^{*}$, i.e. $y = g(y)$. Then, from equation (\ref{eqn:bddLink}), we have
     \begin{equation}
         \lvert x^{*} - y \rvert = \lvert g(x^{*}) - g(y) \rvert \leq K \lvert x^{*} - y \rvert \Rightarrow (1-K)\lvert x^{*} - y \rvert \leq 0
     \end{equation}
@@ -223,9 +226,9 @@ The Banach Fixed Point Theorem for functions tells us that when a function $g$ h
 
 \paragraph{  }
 
-Moreover, the fixed point can be obtained by finding the limit of the sequence of successive approximation of $g$.
+Moreover, the fixed point can be obtained by finding the limit of the sequence of successive approximations of $g$.
 
-\section{Proof of the Theorem in $\mathbb{R}$}
+\section{Proof of the theorem in $\mathbb{R}$}
 
 \paragraph{  }
 In this section, we propose a generalized version of the Banach Fixed Point Theorem by extending it from the version for functions to the version for operators, together with the method of successive substitution for operators. Using these two techniques, we will then prove the existence and uniqueness theorem.
@@ -234,7 +237,7 @@ In this section, we propose a generalized version of the Banach Fixed Point Theo
 
 \paragraph{  }
 
-Consider the equation (\ref{eqn:operatorEqn}), the solution we want to find is where the input and the image of the operator $F$ meet each other. Recall this intersection of the input and output is the \textbf{fixed point} of the operator $F$. 
+Consider equation (\ref{eqn:operatorEqn}), the solution we want to find is where the input and the image of the operator $F$ meet each other. Recall that this intersection of the input and output is the \textbf{fixed point} of the operator $F$. 
 
 \begin{remark}
 
@@ -244,17 +247,17 @@ We generalize the notion of the fixed point for functions. The \textbf{fixed poi
 
 \paragraph{  }
 
-Extending from the case of functions to operators, we could apply the definition \ref{def:MethodSS} to the operator case. We could follow the same mindset in the previous definition, but the only different thing is that the operator is playing the role of the function in the definition \ref{def:MethodSS}, while the points that we iterated in the previous definition are corresponding to the functions in the new definition for operator.
+Extending from the case of functions to operators, we could apply the definition \ref{def:MethodSS} to the operator case. We could follow the same mindset in the previous definition, but the only different thing is that the operator is playing the role of the function in the definition \ref{def:MethodSS}, while the points that we iterated in the previous definition are corresponding to the functions in the new definition of operator.
 
 \begin{definition}[\textbf{The Method of Successive Substituion for Operators}]\label{def:methodSSO}
 
-Similar to the definition \ref{def:MethodSS}, if there is a fixed point $y(x)$ for the operator $F(y(x))$, we could construct a sequence of approximations of functions $\{y_n(x)\}_{n=0}^{\infty}$ that converges to the fixed point of the operator. We describe this recursive procedure using an equation similar to the equation (\ref{eqn:ss}):
+Similar to the definition \ref{def:MethodSS}, if there is a fixed point $y(x)$ for the operator $F(y(x))$, we could construct a sequence of approximations of functions $\{y_n(x)\}_{n=0}^{\infty}$ that converges to the fixed point of the operator. We describe this recursive procedure using an equation similar to equation (\ref{eqn:ss}):
 
 \begin{equation}\label{eqn:sso}
     y_{n+1}(x) = F(y_n(x))
 \end{equation}
 
-The equation (\ref{eqn:sso}) is also called as the \textbf{Picard's Iterations}. The following is an example of how the Picard's Iterations can be applied to an initial value problem.
+Equation (\ref{eqn:sso}) is also called as the \textbf{Picard's Iterations}. The following is an example of how the Picard's Iterations can be applied to an initial value problem.
 
 \begin{example}\label{exm:Picard}
     Compute the Picard iterations for the initial value problem
@@ -280,7 +283,7 @@ The equation (\ref{eqn:sso}) is also called as the \textbf{Picard's Iterations}.
 
 \paragraph{  }
 
-Notice that in the argument and the proof of the Banach Fixed Point Theorem for functions, we let the sequence created by successive substitution converge to a unique solution to the original ordinary differential equation. However, instead of having a sequence of numbers, in the operator case, the Picard's Iterations give us a sequence of function. This makes the definition of convergence of sequence of numbers not sufficient in this case. Hence, we introduce the uniform convergence and the function norm in $\mathbb{R}$ as below to define how a sequence of functions converges uniformly to a function.
+Notice that in the argument and the proof of the Banach Fixed Point Theorem for functions, we let the sequence created by successive substitutions converge to a unique solution to the original ordinary differential equation. However, instead of having a sequence of numbers, in the operator case, the Picard's Iterations give us a sequence of function. This makes the definition of convergence of a sequence of numbers not sufficient in this case. Hence, we introduce the uniform convergence and the function norm in $\mathbb{R}$ as below to define how a sequence of functions converges uniformly to a function.
 
 \begin{remark}[\textbf{function norm in $\mathbb{R}$}]
     We define a function norm of a function with closed domain $D$ in $\mathbb{R}$ to be:
@@ -312,7 +315,7 @@ Using this definition, a stronger version of Banach Fixed Point Theorem (also ca
 \begin{equation}\label{eqn:contractionO}
     \lvert\lvert T(w) - T(z) \rvert\rvert_{[a,b]} \leq K\lvert\lvert w - z \rvert\rvert_{[a,b]}\; \forall w,z \in S
 \end{equation}
-Then the equation $y = T(y)$ has a unique solution in $S$. Moreover, the sequence of successive approximation given by
+Then the equation $y = T(y)$ has a unique solution in $S$. Moreover, the sequence of successive approximations given by
 \begin{equation}\label{eqn:ssoex}
     y_{n+1} = T(y_n), \; \; \; n = 0, 1, 2, \cdots,
 \end{equation}
@@ -320,14 +323,17 @@ converges uniformly to this solution for any choice of the starting function $y_
 \end{theorem}
 
 \begin{proof}
-    \cite{r_kent_nagle_fundamentals_2011}$(1)$ NTS: $\{y_n\}_{n = 1}^{\infty}$ is well defined. \; We will show this using induction. By hypothesis, we know that $y_0 \in S$. Then, $y_1 = T(y_0) \in S$ since $T(y)$ lies in $S$ for all $y$ in $S$. Then by induction for all $n \in \mathbb{N}$, $y_n = T(y_{n-1}) \in S$, so that $\{x_n\}_{n = 1}^{\infty}$ is well-defined.
+    \cite{r_kent_nagle_fundamentals_2011}$(1)$ NTS: $\{y_n\}_{n = 1}^{\infty}$ is well defined. \; We will show this by induction. By hypothesis, we know that $y_0 \in S$. Then, $y_1 = T(y_0) \in S$ since $T(y)$ lies in $S$ for all $y$ in $S$. Then by induction for all $n \in \mathbb{N}$, $y_n = T(y_{n-1}) \in S$, so that $\{x_n\}_{n = 1}^{\infty}$ is well-defined.
     
-    $(2)$ NTS: $\{y_n\}_{n = 1}^{\infty}$ converges to an element in $S$. \; Let $y_m = S_m = y_0 + \sum_{n = 0}^{m}(y_{n+1} - y_n)$. In order to show $\{y_n\}_{n = 1}^{\infty}$ converges, it suffices to show the partial sum $\{S_n\}_{n = 1}^{\infty}$ converges. We will show this partial sum sequence converges using the Weierstrass M-test. First, each increment in the partial sum can be proved to be bounded using the contraction assumption by induction. In other words, $\lvert\lvert y_{m+1} - y_{m}\rvert\rvert_{[a,b]}$ is bounded by induction. Notice, the equation (\ref{eqn:contractionO}) applies for all $w$ and $z$ in $S$. In particular, $\lvert\lvert y_2 - y_1 \rvert\rvert_{[a,b]} = \lvert\lvert T(y_1) - T(y_0) \rvert\rvert_{[a,b]} \leq K \lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]}$. Hence, $\lvert\lvert x_2 - x_1 \rvert\rvert$ is bounded by $K \lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]}$. By induction,
-    \begin{equation}
-        \lvert\lvert y_{m+1} - y_{m} \rvert\rvert_{[a,b]} \leq K \lvert\lvert y_m - y_{m-1} \rvert\rvert_{[a,b]} \leq K^2 \lvert\lvert y_{m-1} - y_{m-2} \rvert\rvert_{[a,b]} \leq \cdots \leq K^m\lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]} \; \forall m \in \mathbb{N} \; (K < 1)
-    \end{equation}
+    $(2)$ NTS: $\{y_n\}_{n = 1}^{\infty}$ converges to an element in $S$. \; Let $y_m = S_m = y_0 + \sum_{n = 0}^{m}(y_{n+1} - y_n)$. To show $\{y_n\}_{n = 1}^{\infty}$ converges, it suffices to show the partial sum $\{S_n\}_{n = 1}^{\infty}$ converges. We will show that this partial sum sequence converges using the Weierstrass M-test. First, each increment in the partial sum can be proved to be bounded using the contraction assumption by induction. In other words, $\lvert\lvert y_{m+1} - y_{m}\rvert\rvert_{[a,b]}$ is bounded by induction. Notice, equation (\ref{eqn:contractionO}) applies for all $w$ and $z$ in $S$. In particular, $\lvert\lvert y_2 - y_1 \rvert\rvert_{[a,b]} = \lvert\lvert T(y_1) - T(y_0) \rvert\rvert_{[a,b]} \leq K \lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]}$. Hence, $\lvert\lvert x_2 - x_1 \rvert\rvert$ is bounded by $K \lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]}$. By induction,
+    \begin{align}
+        \lvert\lvert y_{m+1} - y_{m} \rvert\rvert_{[a,b]} &\leq K \lvert\lvert y_m - y_{m-1} \rvert\rvert_{[a,b]}\\
+        &\leq K^2 \lvert\lvert y_{m-1} - y_{m-2} \rvert\rvert_{[a,b]}\\
+        &\leq \cdots\\
+        &\leq K^m\lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]} \; \forall m \in \mathbb{N} \; (K < 1)
+    \end{align}
    Then because we define $\lvert\lvert * \rvert\rvert = max_{[a,b]}\lvert * \rvert \in \mathbb{R}$,
-    \begin{equation}\label{eqn:comparison}
+    \begin{equation}\label{eqn:comparison2}
         \sum_{n = 0}^{\infty}{\lvert\lvert y_{n+1} - y_n \rvert\rvert_{[a,b]}} \leq \sum_{n = 0}^{\infty}{K^n\lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]}} = \lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]} \sum_{n = 0}^{\infty}{K^n} \; (K < 1)
     \end{equation}
     Thus, the sequence $\lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]} \sum_{n = 0}^{\infty}{K^n} = \lvert\lvert y_1 - y_0 \rvert\rvert_{[a,b]} \cdot \tfrac{1}{1-K}$ (notice, $\sum_{n = 0}^{\infty}{K^n}$ is a geometric series with $K < 1$). Then, by the Weierstrass M-test, we know $\sum_{n = 0}^{\infty}{y_{n+1} - y_n}$ converges uniformly on $C[a,b]$. Hence $\{y_n\}_{n = 1}^{\infty}$ converges uniformly. Let $y^{*} := \lim_{n \to \infty}{y_n}$, then since $y^{*} \in C[a,b]$, $y^{*} \in S$.
@@ -338,7 +344,7 @@ converges uniformly to this solution for any choice of the starting function $y_
     \end{equation}
     Hence $T(y_n) \xrightarrow{unif} T(y^{*})$. Also, we know $T(y_n) = y_{n+1} \xrightarrow{unif} y^{*}$. Then, since the limit is unique, $T(y^{*}) = y^{*}$. Thus, $y^{*}$ is a fixed point of $T(y)$.
     
-    $(4)$ NTS: the fixed point $y^{*}$ is unique in $S$. \; We will show this by contradiction. Suppose by contradiction that there is another fixed point $z$ that is different from $y^{*}$, i.e. $z = T(z)$. Then, from the equation (\ref{eqn:contractionO}), we have
+    $(4)$ NTS: the fixed point $y^{*}$ is unique in $S$. \; We will show this by contradiction. Suppose by contradiction that there is another fixed point $z$ that is different from $y^{*}$, i.e. $z = T(z)$. Then, from equation (\ref{eqn:contractionO}), we have
     \begin{equation}
         \lvert\lvert y^{*} - z \rvert\rvert_{[a,b]} =\lvert\lvert T(y^{*}) - T(z) \rvert\rvert_{[a,b]} \leq K \lvert\lvert y^{*} - z \rvert\rvert_{[a,b]} \Rightarrow (1-K)\lvert\lvert y^{*} - z \rvert\rvert_{[a,b]} \leq 0
     \end{equation}
@@ -366,23 +372,23 @@ Continuing our derivation in the section \ref{sec:3.2}, when we want to find a u
     \begin{equation}
         R_1 = \{(t,y)\lvert \lvert t \rvert \leq h_1, \lvert y - y_0 \rvert \leq \alpha\} \subset R
     \end{equation}
-    Since $f$ and $\tfrac{\partial f}{\partial y}$ are both continuous in $R$, they are thus continuous in $R_1$. Then $\forall (t,y) \in R_1$, we know that $\exists M, L \in \mathbb{R}$ such that
+    Since $f$ and $\tfrac{\partial f}{\partial y}$ are both continuous in $R$, they are continuous in $R_1$. Then $\forall (t,y) \in R_1$, we know that $\exists M, L \in \mathbb{R}$ such that
     \begin{equation}\label{eqn:bddAssumption}
         \lvert\lvert f(t,y) \rvert\rvert_{R_1} \leq M \text{, and }\left\lvert\left\lvert \dfrac{\partial f(t,y)}{\partial y} \right\rvert\right\rvert_{R_1} \leq L
     \end{equation}
-    because the continuous image of a connected set (an interval) is connected (an interval), the image is bounded. Let $S = \{g \in C(I) \lvert \lvert \lvert g - y_0\rvert\rvert_{I} \leq \alpha\}$. Choose $0 < h < min\{h_1, \tfrac{\alpha}{M}, \tfrac{1}{L}\}$, we will show that the assumptions of the Theorem \ref{thm:BFPTO} are met; i.e. $F(y)$ is a contraction map mapping $S$ to $S$.
+    Because the continuous image of a connected set (an interval) is connected (an interval), the image is bounded. Let $S = \{g \in C(I) \lvert \lvert \lvert g - y_0\rvert\rvert_{I} \leq \alpha\}$. Choose $0 < h < min\{h_1, \tfrac{\alpha}{M}, \tfrac{1}{L}\}$, we will show that the assumptions of the Theorem \ref{thm:BFPTO} are met; i.e. $F(y)$ is a contraction map mapping $S$ to $S$.
     Let $g(t) \in S$, then $g(t)$ is a continuous function, and $\lvert g(t) - y_0 \rvert \leq \alpha\; \forall x \in I$. Then we will show $F(g) \in S$, i.e. $\lvert\lvert F(g) - y_0 \rvert\rvert_{I} \leq \alpha$. Indeed, first, by the way we choosing $h$, it is obvious that $I \subseteq [-h_1, h_1]$, then $\lvert\lvert f(t,y) \rvert\rvert_{I} \leq M \text{, and }\left\lvert\left\lvert \tfrac{\partial f(t,y)}{\partial y} \right\rvert\right\rvert_{I} \leq L$, then: 
     \begin{align}
         \left\lvert\left\lvert F(g) - y_0 \right\rvert\right\rvert_{I} &= \left\lvert\left\lvert y_0 + \int_{0}^{t}{f(s,g(s))}\,ds - y_0\right\rvert\right\rvert_{I}\\
-        &=\left\lvert\left\lvert \int_{0}^{t}{f(s,g(s))}\,ds\right\rvert\right\rvert_{I} \leq \int_{0}^{t}{\lvert\lvert f(s,g(s))\rvert\rvert_{I}}\,ds\\
-        &\leq \int_{0}^{t}{M}\,ds = M\int_{0}^{t}{1}\,ds = M\lvert t - 0\rvert\\
+        &=\left\lvert\left\lvert \int_{0}^{t}{f(s,g(s))}\,ds\right\rvert\right\rvert_{I} \leq \left\lvert\int_{0}^{t}{\lvert\lvert f(s,g(s))\rvert\rvert_{I}}\,ds\right\rvert\\
+        &\leq \left\lvert\int_{0}^{t}{M}\,ds\right\rvert = M\left\lvert \int_{0}^{t}{1}\,ds\right\rvert = M\lvert t - 0\rvert\\
         &\leq Mh \leq M\cdot (\tfrac{\alpha}{M}) \leq \alpha
     \end{align}
-    Then, we will show that the $F$ is a contraction on $S$ by showing that $\forall v < u \in S, \lvert\lvert F(u) - F(v) \rvert\rvert_I \leq \lvert\lvert u - v \rvert\rvert_I$. Indeed, using the mean value theorem for two variables, there exist $v(s) < z(s) < u(s) \; \forall s \in I \subseteq R_1$, such that:
+    Then, we will show that $F$ is a contraction on $S$ by showing that $\forall v < u \in S, \lvert\lvert F(u) - F(v) \rvert\rvert_I \leq \lvert\lvert u - v \rvert\rvert_I$. Indeed, using the mean value theorem for two variables, there exist $v(s) < z(s) < u(s) \; \forall s \in I \subseteq R_1$, such that:
     \begin{align}
         \lvert\lvert F(u) - F(v) \rvert\rvert_I & = \left\lvert\left\lvert \int_{0}^{t}{(f(s,u(s)) - f(s,v(s))) \,ds} \right\rvert\right\rvert_I\\
         & = \left\lvert\left\lvert \int_{0}^{t}\tfrac{\partial f}{\partial y}(s,z(s)){(u(s) - v(s))} \,ds \right\rvert\right\rvert_I\\
-        & \leq L\int_{0}^{t}{\lvert\lvert u(s) - v(s) \rvert\rvert_I \,ds}\\
+        & \leq L\left\lvert\int_{0}^{t}{\lvert\lvert u(s) - v(s) \rvert\rvert_I \,ds}\right\rvert\\
         & \leq L\lvert\lvert u - v \rvert\rvert_{I} \left\lvert \int_{0}^{t}{1}\,ds \right\rvert \leq L\lvert\lvert u - v \rvert\rvert_{I}\lvert t \rvert\\
         & \leq Lh\lvert\lvert u - v \rvert\rvert_{I} \leq L \cdot(\tfrac{1}{L})\lvert\lvert u - v \rvert\rvert = \lvert\lvert u - v \rvert\rvert
     \end{align}
@@ -433,7 +439,7 @@ A \textbf{metric space} $(X,d)$ satisfies the below three properties $\forall x,
     \item $d(x,z) \leq d(x,y) + d(y,z)$
 \end{itemize}
 
-Also, $d$ is also called as the metric of the metric space $(X,d)$
+Additionally, $d$ is also called as the metric of the metric space $(X,d)$
 \end{definition}
 
 \paragraph{  }
@@ -452,7 +458,7 @@ In this section, the version of the Existence and Uniqueness Theorem in a metric
 
 \paragraph{  }
 
-Now, we have the definition for metric space, we still need the properties for convergence. Thus, we refine the definitions for convergence, uniform convergence, and Cauchy sequences in the metric space.
+Now, we have the definition of metric space, we still need the properties for convergence. Thus, we refine the definitions of convergence, uniform convergence, and Cauchy sequences in the metric space.
 
 \begin{definition}[\textbf{convergence of a sequence in a norm induced metric space $(X,d)$}]\label{def:ConvMetric}
     A sequence $\{x_n\}_{n=1}^{\infty} \subseteq X$ converges to $x \in X$ if and only if $\forall \epsilon > 0, \exists N(\epsilon) \in \mathbb{N}$, such that $\forall n > N, d(x_n - x) < \epsilon$. i.e. 
@@ -480,7 +486,7 @@ Now, we have the definition for metric space, we still need the properties for c
 
 To prove the existence and uniqueness theorem in the general metric space, we seek to use the similar ideas to the Banach Fixed Point Theorem as we did in the previous section. We will prove the contraction mapping theorem, which states that a contraction mapping is guaranteed to have a fixed point.
 
-Before proving this theorem, however, we still need the definition of completeness and definition of contraction.
+Before proving this theorem, however, we still need the definition of completeness and the definition of contraction.
 
 \begin{definition}[\textbf{Completeness}]\label{def:completeness}
 
@@ -507,12 +513,12 @@ Now, we are ready to prove the Contraction Mapping theorem using the definitions
 
 \begin{proof}
 
-    We will show $\{x_n\}$ converges to $x^* \in X$. i.e. $x^*$ is a fixed point. Since $X$ is a complete metric space, it suffices to show that $\{x_n\}_{n = 1}^{\infty}$ is a Cauchy sequence. Now, for $n = 1,2, \cdots$, we apply Definition \ref{def:contraction} repeatedly and obtain the following
+    We will show $\{x_n\}$ converges to $x^* \in X$. i.e., $x^*$ is a fixed point. Since $X$ is a complete metric space, it suffices to show that $\{x_n\}_{n = 1}^{\infty}$ is a Cauchy sequence. Now, for $n = 1,2, \cdots$, we apply Definition \ref{def:contraction} repeatedly and obtain the following
         \begin{equation}
             d(x_{n+1},x_n) = d(A(x_n),A(x_{n-1})) \leq \alpha d(x_n,x_{n-1}) \leq \alpha^2 d(x_{n-1},x_{n-2}) \leq \cdots \leq \alpha^n d(x_1,x_0)
         \end{equation}
         
-    Let n, m $\in \mathbb{N}$, by triangle inequality we have
+    Let n, m $\in \mathbb{N}$, by triangle inequality, we have
     
         \begin{align}
             d(x_{n+m},x_n) &\leq \sum_{i=1}^{m} d(x_{n+i},x_{n+i-1})\\
@@ -527,12 +533,12 @@ Now, we are ready to prove the Contraction Mapping theorem using the definitions
     Since by definition \ref{def:contraction}, $0 < \alpha < 1$, then $1-\alpha > 0$, and therefore $d(x^{*},y) = 0 \implies x^{*} = y$. Thus, $x^{*}$ is unique in $X$
 \end{proof}
 
-Basically a metric space defines a distance between the objects in a field. With the above definitions and theorem stated in a metric space, we can state a general version of Theorem \ref{thm:EUT} within a general metric space $(X,d)$. 
+Basically a metric space defines a distance between the objects in a field. With the above definitions and theorems stated in a metric space, we can state a general version of Theorem \ref{thm:EUT} within a general metric space $(X,d)$. 
 
 The proof of this theorem is similar to the one we did previously, we will define a mapping and apply the contraction mapping theorem that we have just proved. Then, we will use this result to prove there exists a unique solution to the Initial Value Problem.
 
 \begin{theorem}[\textbf{The Existence and Uniqueness Theorem in $(X,d)$}]\cite{r_kent_nagle_fundamentals_2011}\label{thm:EUTXd}
-    Define $(X,d)$ is a complete norm induced metric space. Let $f$ and $\tfrac{\partial f}{\partial y}$ be continuous in the rectangle $R = \{(t,y)|a < t < b, c < y < d\} \subseteq X$ where $a,b,c,d \in X$ and the rectangle contains the point $(0, y_0) \in R \subseteq X$. Then the initial problem
+    Define $(X,d)$ is a complete norm-induced metric space. Let $f$ and $\tfrac{\partial f}{\partial y}$ be continuous in the rectangle $R = \{(t,y)|a < t < b, c < y < d\} \subseteq X$ where $a,b,c,d \in X$ and the rectangle contains the point $(0, y_0) \in R \subseteq X$. Then the initial problem
     \begin{equation}
         \dfrac{\,dy}{\,dt} = f(t,y),\; y(0) = y_0
     \end{equation}
@@ -585,7 +591,7 @@ has a unique solution in some interval $I = [-h, h]$, where h is an element in $
 
 \paragraph{  }
 
-In order to determine whether an ordinary equation has a solution in a certain interval without solving for explicit formulas, we need help from the Existence and Uniqueness Theorem. In this project, we first proved the Theorem in $\mathbb{R}$ with help with the Banach Fixed Point Theorem for operators, and we obtained the approximation for the unique solution using the Picard's Iterations. Second, we extended our claim into a general metric space $(X,d)$ with a norm induced metric $d$ and used the successive substitution to approximate the unique solution in the general metric space.
+In order to determine whether an ordinary equation has a solution in a certain interval without solving for explicit formulas, we need help from the Existence and Uniqueness Theorem. In this project, we first proved the Theorem in $\mathbb{R}$ using the Banach Fixed Point Theorem for operators, and then obtained the approximation for the unique solution by the Picard Iterations. Second, we extend our claim into a general metric space $(X,d)$ with a norm induced metric $d$. We used the successive substitution again to approximate the unique solution in the general metric space.
 
 \newpage
 \bibliographystyle{alpha}
